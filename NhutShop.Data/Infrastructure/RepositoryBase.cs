@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace NhutShop.Data.Infrastructure
 {
-    public abstract class RepositoryBase<T> where T: class
+    public abstract class RepositoryBase<T>: IRepository<T> where T: class
     {
         private NhutShopDbContext dataContext;
         private readonly IDbSet<T> dbSet;
@@ -86,7 +86,7 @@ namespace NhutShop.Data.Infrastructure
             return GetAll(includes).FirstOrDefault(expression);
         }
 
-        public  virtual IQueryable<T> GetMuli(Expression<Func<T, bool>> precidate, string[] includes = null)
+        public  virtual IQueryable<T> GetMulti(Expression<Func<T, bool>> precidate, string[] includes = null)
         {
             if (includes != null && includes.Count() > 0)
             {
@@ -98,7 +98,7 @@ namespace NhutShop.Data.Infrastructure
             return dataContext.Set<T>().Where<T>(precidate).AsQueryable();
         }
 
-        public virtual IQueryable<T> GetMuliPaging(Expression<Func<T, bool>> precidate, out int total, int index = 0, int size = 50, string[] includes = null)
+        public virtual IQueryable<T> GetMultiPaging(Expression<Func<T, bool>> precidate, out int total, int index = 0, int size = 50, string[] includes = null)
         {
             int skipCount = index * size;
             IQueryable<T> _resetSet;
@@ -125,7 +125,7 @@ namespace NhutShop.Data.Infrastructure
             return dataContext.Set<T>().Count<T>(precidate) > 0;
         }
 
-
+       
     }
   
 }
