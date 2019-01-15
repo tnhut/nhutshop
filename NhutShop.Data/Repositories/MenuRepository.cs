@@ -9,6 +9,9 @@ using System.Threading.Tasks;
 namespace NhutShop.Data.Repositories
 {
     public interface IMenuRepository: IRepository<Menu>
+    {
+
+    }
 
    public class MenuRepository: RepositoryBase<Menu>, IMenuRepository
     {
