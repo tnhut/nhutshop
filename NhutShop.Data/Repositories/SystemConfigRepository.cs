@@ -8,13 +8,14 @@ using System.Threading.Tasks;
 
 namespace NhutShop.Data.Repositories
 {
-    public interface IProductRepository: IRepository<Product>
+    public interface ISystemConfigRepository : IRepository<SystemConfig>
     {
 
     }
-    public  class ProductRepository: RepositoryBase<Product>, IProductRepository
+
+    public class SystemConfigRepository: RepositoryBase<SystemConfig>, ISystemConfigRepository
     {
-        public ProductRepository(IDbFactory dbFactory): base(dbFactory)
+        public SystemConfigRepository(IDbFactory dbFactory): base(dbFactory)
         {
 
         }

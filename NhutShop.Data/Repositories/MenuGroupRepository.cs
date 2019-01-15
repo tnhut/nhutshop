@@ -8,15 +8,17 @@ using System.Threading.Tasks;
 
 namespace NhutShop.Data.Repositories
 {
-    public interface IProductRepository: IRepository<Product>
+    public interface IMenuGroupRepository: IRepository<MenuGroup>
     {
 
     }
-    public  class ProductRepository: RepositoryBase<Product>, IProductRepository
+
+  public class MenuGroupRepository: RepositoryBase<MenuGroup>, IMenuGroupRepository
     {
-        public ProductRepository(IDbFactory dbFactory): base(dbFactory)
+        public MenuGroupRepository(IDbFactory dbFactory) : base(dbFactory)
         {
 
         }
+
     }
 }
