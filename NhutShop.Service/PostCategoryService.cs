@@ -11,9 +11,9 @@ namespace NhutShop.Service
 {
     public interface IPostCategoryService
     {
-        void Add(PostCategory post);
+        PostCategory Add(PostCategory post);
         void Update(PostCategory post);
-        void Delete(int id);
+        PostCategory Delete(int id);
         IEnumerable<PostCategory> GetAll();
         IEnumerable<PostCategory> GetAllByParentId(int parentId);
         PostCategory GetById(int id);
@@ -29,14 +29,14 @@ namespace NhutShop.Service
             this._postCategoryRepository = postCategoryRepository;
             this._unitOfWork = unitOfWork;
         }
-        public void Add(PostCategory postCategory)
+        public PostCategory Add(PostCategory postCategory)
         {
-            _postCategoryRepository.Add(postCategory);
+          return  _postCategoryRepository.Add(postCategory);
         }
 
-        public void Delete(int id)
+        public PostCategory Delete(int id)
         {
-            _postCategoryRepository.Delete(id);
+            return _postCategoryRepository.Delete(id);
         }
 
         public IEnumerable<PostCategory> GetAll()
