@@ -35,6 +35,8 @@ namespace NhutShop.Model.Models
 
         public bool? HomeFlag { set; get; }
 
+        public bool Status { set; get; }
+
         public virtual IEnumerable<Post> Posts { set; get; }
 
     }
