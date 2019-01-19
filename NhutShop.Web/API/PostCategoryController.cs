@@ -25,17 +25,10 @@ namespace NhutShop.Web.API
         public HttpResponseMessage Get(HttpRequestMessage request)
         {
             return CreateHttpResponse(request, () =>
-            {
-                HttpResponseMessage response = null;
-                if (ModelState.IsValid)
-                {
-                    request.CreateErrorResponse(HttpStatusCode.BadRequest, ModelState);
-                }
-                else
-                {
-                    var listcategory = _postCategoryService.GetAll();             
-                    response = request.CreateResponse(HttpStatusCode.OK, listcategory);
-                }
+            {                   
+                    var listcategory = _postCategoryService.GetAll();
+                HttpResponseMessage response = request.CreateResponse(HttpStatusCode.OK, listcategory);
+                
                 return response;
             });
         }
