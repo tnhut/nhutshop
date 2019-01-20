@@ -69,6 +69,10 @@
     <Compile Include="Migrations\201901171737439_AddErrorTable.Designer.cs">
       <DependentUpon>201901171737439_AddErrorTable.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201901201750495_UPDATE-MODEL.cs" />
+    <Compile Include="Migrations\201901201750495_UPDATE-MODEL.Designer.cs">
+      <DependentUpon>201901201750495_UPDATE-MODEL.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="NhutShopDbContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -114,6 +118,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201901171737439_AddErrorTable.resx">
       <DependentUpon>201901171737439_AddErrorTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201901201750495_UPDATE-MODEL.resx">
+      <DependentUpon>201901201750495_UPDATE-MODEL.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

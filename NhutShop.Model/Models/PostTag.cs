@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NhutShop.Model.Abstract;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -9,7 +10,7 @@ using System.Threading.Tasks;
 namespace NhutShop.Model.Models
 {
    [Table("PostTags")]
-    public class PostTag
+    public class PostTag : Auditable
     {
         [Key]
         [Column(Order=1)]

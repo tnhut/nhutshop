@@ -1,12 +1,15 @@
-﻿using NhutShop.Model.Models;
+﻿using AutoMapper;
+using NhutShop.Model.Models;
 using NhutShop.Service;
 using NhutShop.Web.Infrastructure.Core;
+using NhutShop.Web.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using NhutShop.Web.Infrastructure.Extensions;
 
 namespace NhutShop.Web.API
 {
@@ -27,13 +30,16 @@ namespace NhutShop.Web.API
             return CreateHttpResponse(request, () =>
             {                   
                     var listcategory = _postCategoryService.GetAll();
-                HttpResponseMessage response = request.CreateResponse(HttpStatusCode.OK, listcategory);
+
+                    var listPostCategoryVm = Mapper.Map<List<PostCategoryViewModel>>(listcategory);
+                HttpResponseMessage response = request.CreateResponse(HttpStatusCode.OK, listPostCategoryVm);
                 
                 return response;
             });
         }
 
-        public HttpResponseMessage Post(HttpRequestMessage request, PostCategory postCategory)
+        [Route("add")]
+        public HttpResponseMessage Post(HttpRequestMessage request, PostCategoryViewModel postCategoryVm)
         {
             return CreateHttpResponse(request, () =>
             { 
@@ -44,7 +50,10 @@ namespace NhutShop.Web.API
                 }
                 else
                 {
-                    var category= _postCategoryService.Add(postCategory);
+                    PostCategory newPostCategory = new PostCategory();
+                    newPostCategory.UpdatePostCategory(postCategoryVm);
+                    
+                    var category= _postCategoryService.Add(newPostCategory);
                     _postCategoryService.Save();
                     response = request.CreateResponse(HttpStatusCode.Created, category);
                 }
@@ -52,7 +61,8 @@ namespace NhutShop.Web.API
             });
         }
 
-        public HttpResponseMessage Put(HttpRequestMessage request, int id)
+       
+        public HttpResponseMessage Delete(HttpRequestMessage request, int id)
         {
             return CreateHttpResponse(request, () =>
             {
@@ -71,7 +81,8 @@ namespace NhutShop.Web.API
             });
         }
 
-        public HttpResponseMessage Delete(HttpRequestMessage request, PostCategory postCategory)
+        [Route("update")]
+        public HttpResponseMessage Put(HttpRequestMessage request, PostCategoryViewModel postCategoryVm)
         {
             return CreateHttpResponse(request, () =>
             {
@@ -82,7 +93,9 @@ namespace NhutShop.Web.API
                 }
                 else
                 {
-                    _postCategoryService.Update(postCategory);
+                    var postCategoryDb = _postCategoryService.GetById(postCategoryVm.ID);
+                    postCategoryDb.UpdatePostCategory(postCategoryVm);
+                    _postCategoryService.Update(postCategoryDb);
                     _postCategoryService.Save();
                     response = request.CreateResponse(HttpStatusCode.OK);
                 }
