@@ -1,4 +1,5 @@
-﻿using NhutShop.Model.Models;
+﻿using Microsoft.AspNet.Identity.EntityFramework;
+using NhutShop.Model.Models;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -9,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace NhutShop.Data
 {
-   public class NhutShopDbContext: DbContext
+   public class NhutShopDbContext: IdentityDbContext<ApplicationUser>
     {
         public NhutShopDbContext() : base("NhutShopConnection")
         {
@@ -34,9 +35,17 @@ namespace NhutShop.Data
         public DbSet<Tag> Tags { set; get; }
         public DbSet<VisitorStatistic> VisitorStatistics { set; get; }
         public DbSet<Error> Errors { set; get; }
+
+        public static NhutShopDbContext Create()
+        {
+            return new NhutShopDbContext();
+        }
+
         protected override void OnModelCreating(DbModelBuilder builder)
         {
-
+            builder.Entity<IdentityUserRole>().HasKey(x => new { x.UserId, x.RoleId });
+            builder.Entity<IdentityUserLogin>().HasKey(x => x.UserId);
+            
         }
 
     }

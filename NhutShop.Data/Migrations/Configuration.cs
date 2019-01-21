@@ -1,5 +1,8 @@
 namespace NhutShop.Data.Migrations
 {
+    using Microsoft.AspNet.Identity;
+    using Microsoft.AspNet.Identity.EntityFramework;
+    using Model.Models;
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
@@ -16,16 +19,32 @@ namespace NhutShop.Data.Migrations
         {
             //  This method will be called after migrating to the latest version.
 
-            //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
-            //  to avoid creating duplicate seed data. E.g.
-            //
-            //    context.People.AddOrUpdate(
-            //      p => p.FullName,
-            //      new Person { FullName = "Andrew Peters" },
-            //      new Person { FullName = "Brice Lambson" },
-            //      new Person { FullName = "Rowan Miller" }
-            //    );
-            //
+            var manager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new NhutShopDbContext()));
+            var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(new NhutShopDbContext()));
+
+            var user = new ApplicationUser()
+            {
+                UserName = "tnhut",
+                Email = "tnhut@gmail.com",
+                EmailConfirmed = true,
+                BirthDay = DateTime.Now,
+                FullName = "PeterNhut",
+                Address = "93 CMT", 
+                Id="12345",          
+            };
+            
+            manager.Create(user, "123459$");
+            if(!roleManager.Roles.Any())
+            {
+                roleManager.Create(new IdentityRole { Name = "Admin" });
+                roleManager.Create(new IdentityRole { Name = "User" });
+            }
+
+            var adminUser = manager.FindByEmail("tnhut@gmail.com");
+            //if (adminUser != null)
+          // {
+                manager.AddToRoles(adminUser.Id, new string[] { "Admin", "User" });
+           // }
         }
     }
 }
