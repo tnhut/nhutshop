@@ -2859,6 +2859,7 @@
     <Content Include="Scripts\Plugins\angular-1.7.6\test-bundles\angular-sanitize.js" />
     <Content Include="Scripts\Plugins\angular-1.7.6\test-bundles\angular-touch.js" />
     <Content Include="Scripts\Plugins\angular-1.7.6\version.txt" />
+    <Content Include="Scripts\Spa\app.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -2873,7 +2874,6 @@
     <Folder Include="Assets\Admin\" />
     <Folder Include="Assets\Client\" />
     <Folder Include="Scripts\Plugins\angular-1.7.6\i18n\ngLocale\" />
-    <Folder Include="Scripts\Spa\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

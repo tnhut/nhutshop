@@ -5,15 +5,17 @@
 
 <!DOCTYPE html>
 
-<html ng-app="">
+<html ng-app="myModule" >
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>Index</title>
     <script src="~/Scripts/Plugins/angular-1.7.6/angular.js"></script>
+    <script src="~/Scripts/Spa/app.js"></script>
+    @*<script src="~/Scripts/Plugins/angular-1.7.6/angular.min.js"></script>*@
 </head>
-<body>
-    <div> 
-        20+40= {{20+40}}
+<body  >
+    <div ng-controller="myController">        
+        {{message}}
     </div>
 </body>
 </html>
