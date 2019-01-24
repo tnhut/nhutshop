@@ -14,8 +14,17 @@
     @*<script src="~/Scripts/Plugins/angular-1.7.6/angular.min.js"></script>*@
 </head>
 <body  >
-    <div ng-controller="myController">        
+    <div ng-controller="schoolController">        
         {{message}}
+        <div ng-controller="teachermyController">
+            {{message}}
+        </div>
+
+        <div ng-controller="studentmyController">
+            {{message}}
+        </div>
+
     </div>
+    
 </body>
 </html>
