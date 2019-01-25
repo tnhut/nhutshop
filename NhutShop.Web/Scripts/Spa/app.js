@@ -2,6 +2,7 @@
 
 var app = angular.module('myModule', []);
 app.controller('schoolController', schoolController);
+app.directive("nhutShopDirective", nhutShopDirective);
 app.service('Validation', Validation);
 
 schoolController.$inject = ['$scope', 'Validation'];
@@ -29,7 +30,12 @@ function Validation($window) {
     }
 }
 
-
+function nhutShopDirective() {
+    return {
+        restrict: "A",
+        templateUrl: "/Scripts/Spa/nhutShopDirective.html"
+    }
+}
 
 
 

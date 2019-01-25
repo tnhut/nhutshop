@@ -2860,6 +2860,7 @@
     <Content Include="Scripts\Plugins\angular-1.7.6\test-bundles\angular-touch.js" />
     <Content Include="Scripts\Plugins\angular-1.7.6\version.txt" />
     <Content Include="Scripts\Spa\app.js" />
+    <Content Include="Scripts\Spa\nhutShopDirective.html" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
