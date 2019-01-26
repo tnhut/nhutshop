@@ -1,3 +1,4 @@
 {
-    "directory": "Scripts/Plugins"
+  "directory": "Scripts/Plugins",
+   "registry": "https://registry.bower.io" 
 }
