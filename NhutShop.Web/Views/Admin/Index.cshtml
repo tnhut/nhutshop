@@ -4,12 +4,13 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+   
+   
     <title>Trang quản trị</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap 3.3.7 -->
     <link href="~/Assets/Admin/libs/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
-    @*<link rel="stylesheet" href="../../bower_components/bootstrap/dist/css/bootstrap.min.css">*@
     <!-- Font Awesome -->
     @*<link rel="stylesheet" href="../../bower_components/font-awesome/css/font-awesome.min.css">*@
     <!-- Ionicons -->
@@ -28,6 +29,9 @@
     <![endif]-->
     <!-- Google Font -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+    @*<style>
+        navbar-nav{padding-left:0; margin-bottom:0; list-style:none; margin-left:-40px}
+    </style>*@
 </head>
 <body class="hold-transition skin-blue sidebar-mini" ng-app="nhutshop">
     <!-- Site wrapper -->
@@ -41,7 +45,7 @@
                 <span class="logo-lg"><b>Admin</b>LTE</span>
             </a>
             <!-- Header Navbar: style can be found in header.less -->
-            <nav class="navbar navbar-static-top">
+            <nav class="navbar navbar-static-top" style="height:10px">
                 <!-- Sidebar toggle button-->
                 <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
                     <span class="sr-only">Toggle navigation</span>
@@ -575,7 +579,8 @@
     <script src="~/Assets/Admin/libs/jQuery/dist/jquery.js"></script>
     @*<script src="../../bower_components/jquery/dist/jquery.min.js"></script>*@
     <!-- Bootstrap 3.3.7 -->
-    <script src="~/Assets/Admin/libs/bootstrap/dist/js/bootstrap.js"></script>    
+    @*<script src="~/Assets/Admin/libs/bootstrap/dist/js/bootstrap.js"></script>*@  
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">  
     <!-- SlimScroll -->
     <script src="~/Assets/Admin/libs/slimScroll/jquery.slimscroll.js"></script>
     <!-- FastClick -->
@@ -583,6 +588,7 @@
     @*<script src="../../bower_components/fastclick/lib/fastclick.js"></script>*@
     <!-- AdminLTE App -->
     <script src="~/Assets/Admin/js/adminlte.min.js"></script>
+   
     <!-- Begin Angularjs -->
     <script src="~/Assets/Admin/libs/angular/angular.js"></script>
     <script src="~/Assets/Admin/libs/angular-ui-router/release/angular-ui-router.js"></script>
