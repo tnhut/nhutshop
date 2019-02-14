@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
@@ -9,8 +10,10 @@ namespace NhutShop.Web.Models
     {
         public int ID { set; get; }
 
+        [Required(ErrorMessage ="Yêu cầu nhập tên danh mục")]
         public string Name { set; get; }
 
+        [Required(ErrorMessage = "Yêu cầu nhập tiêu đề SEO")]
         public string Alias { set; get; }
 
         public string Description { set; get; }
@@ -36,6 +39,7 @@ namespace NhutShop.Web.Models
 
         public string MetaDescription { set; get; }
 
+        [Required(ErrorMessage = "Yêu cầu nhập trạng thái")]
         public bool Status { set; get; }
     }
 }
