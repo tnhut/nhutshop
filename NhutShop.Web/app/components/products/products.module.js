@@ -5,6 +5,7 @@
 
     config.$inject = ['$stateProvider', '$urlRouterProvider']
     function config($stateProvider, $urlRouterProvider) {
+        debugger
         $stateProvider.state('products', {
             url: "/products",
             templateUrl: "/app/components/products/productListView.html",
