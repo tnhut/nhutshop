@@ -47,9 +47,9 @@ namespace NhutShop.Web.Models
 
         public string MetaDescription { set; get; }
 
-        [Required]
+      //  [Required]
         public bool Status { set; get; }
-
+        public string Tags { set; get; }
         public virtual ProductCategoryViewModel ProductCategory { set; get; }
     }
 }

@@ -2,8 +2,8 @@
 
 (function () {
     angular.module('nhutshop',
-        ['nhutshop.products',
-         'nhutshop.product_categories',
+        ['nhutshop.product_categories',
+         'nhutshop.products',
          'nhutshop.common'])
         .config(config);
 

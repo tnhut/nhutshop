@@ -19,10 +19,11 @@ namespace NhutShop.Web.API
     public class ProductController : ApiControllerBase
     {
         private IProductService _productService;
-
+      
         public ProductController(IErrorService errorService, IProductService productService) : base(errorService)
         {
             this._productService = productService;
+            
         }
 
         [Route("getallparents")]
@@ -42,8 +43,8 @@ namespace NhutShop.Web.API
 
         [Route("getbyid/{id:int}")]
         [HttpGet]
-        public HttpResponseMessage GetById(HttpRequestMessage request, int id)
-        {
+        public HttpResponseMessage GetById(HttpRequestMessage request, int id )
+        {          
             return CreateHttpResponse(request, () =>
             {
                 var model = _productService.GetById(id);
@@ -52,6 +53,7 @@ namespace NhutShop.Web.API
 
                 var response = request.CreateResponse(HttpStatusCode.OK, responseData);
                 return response;
+
             });
         }
 
@@ -109,6 +111,7 @@ namespace NhutShop.Web.API
 
         [Route("update")]
         [HttpPut]
+       // [AcceptVerbs("Put","Get")]
         [AllowAnonymous]
         public HttpResponseMessage Update(HttpRequestMessage request, ProductViewModel productVm)
         {
