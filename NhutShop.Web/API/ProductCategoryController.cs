@@ -16,6 +16,8 @@ using System.Web.Script.Serialization;
 namespace NhutShop.Web.API
 {
     [RoutePrefix("API/productcategory")]
+    [Authorize]
+    [AllowAnonymous]
     public class ProductCategoryController : ApiControllerBase
     {
       private IProductCategoryService _productCategoryService;

@@ -36,11 +36,17 @@
             toastr.info(message);
         }
 
+        function hides() {
+            toastr.remove();
+        }
+
         return {
             displaySuccess: displaySuccess,
             displayError: displayError,
             displayWarning: displayWarning,
-            displayInfo: displayInfo
+            displayInfo: displayInfo,
+            hides: hides
+            
         }
     }
 })(angular.module('nhutshop.common'));
