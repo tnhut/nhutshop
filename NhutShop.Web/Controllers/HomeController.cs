@@ -14,17 +14,32 @@ namespace NhutShop.Web.Controllers
     public class HomeController : Controller
     {
         IProductCategoryService _productCategoryService;
+        IProductService _productService;
         ICommonService _commonService;
 
-        public HomeController(IProductCategoryService productCategoryService, ICommonService commonService)
+        public HomeController(IProductCategoryService productCategoryService, ICommonService commonService,
+            IProductService productService)
         {
            _productCategoryService = productCategoryService;
             _commonService = commonService;
+            _productService = productService;
         }
 
         public ActionResult Index()
         {
-            return View();
+            var slideModel = _commonService.GetSlides();
+            var slideView = Mapper.Map<IEnumerable<Slide>,IEnumerable<SlideViewModel>>(slideModel);
+            var homeViewModel = new HomeViewModel();
+            homeViewModel.Slides = slideView;
+
+            var latesProduct = _productService.GetLatest(3);
+            var topSalesProductModel = _productService.GetHotProduct(3);
+
+            var latesProductViewModel = Mapper.Map<IEnumerable<Product>, IEnumerable<ProductViewModel>>(latesProduct);
+            var topSalesProductViewModel = Mapper.Map<IEnumerable<Product>, IEnumerable<ProductViewModel>>(topSalesProductModel);
+            homeViewModel.LastesProducts = latesProductViewModel;
+            homeViewModel.TopSalesProducts = topSalesProductViewModel;
+            return View(homeViewModel);
         }
 
         public ActionResult About()

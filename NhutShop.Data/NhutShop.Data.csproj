@@ -101,6 +101,10 @@
     <Compile Include="Migrations\201902211716521_AddTagField.Designer.cs">
       <DependentUpon>201902211716521_AddTagField.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201905190720281_AddContentToSlide.cs" />
+    <Compile Include="Migrations\201905190720281_AddContentToSlide.Designer.cs">
+      <DependentUpon>201905190720281_AddContentToSlide.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="NhutShopDbContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -164,6 +168,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201902211716521_AddTagField.resx">
       <DependentUpon>201902211716521_AddTagField.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905190720281_AddContentToSlide.resx">
+      <DependentUpon>201905190720281_AddContentToSlide.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

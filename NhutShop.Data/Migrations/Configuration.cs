@@ -20,8 +20,13 @@
         protected override void Seed(NhutShop.Data.NhutShopDbContext context)
         {
             CreateProductCategorySample(context);
+            CreateSlide(context);
             //  This method will be called after migrating to the latest version.
+                     
+        }
 
+        private void CreateUser(NhutShopDbContext context)
+        {
             //var manager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new NhutShopDbContext()));
             //var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(new NhutShopDbContext()));
 
@@ -35,7 +40,7 @@
             //    Address = "93 CMT", 
             //    Id="12345",          
             //};
-            
+
             //manager.Create(user, "123459$");
             //if(!roleManager.Roles.Any())
             //{
@@ -44,9 +49,8 @@
             //}
 
             //var adminUser = manager.FindByEmail("tnhut@gmail.com");
-           
+
             //manager.AddToRoles(adminUser.Id, new string[] { "Admin", "User" });
-           
         }
 
         private void CreateProductCategorySample(NhutShop.Data.NhutShopDbContext context)
@@ -71,6 +75,41 @@
             if(context.Footer.Count(x=>x.ID==CommonConstants.DefaultFooterId)==0)
             {
                 string content = "";
+            }
+        }
+
+        private void CreateSlide(NhutShopDbContext context)
+        {
+            if (context.Slides.Count() == 0)
+            {
+                List<Slide> listSlide = new List<Slide>()
+                {
+                     new Slide() {
+                                Name = "Slider 1",
+                                DisplayOrder = 1,
+                                Status = true,
+                                Url = "#",
+                                Image = "/Assets/client/images/bad.jpg",
+                                Content =@"<h2>FLAT 50% 0FF</h2>
+                                <label>FOR ALL PURCHASE <b>VALUE</b></label>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et </ p >
+                               <span class=""on-get"">GET NOW</span>"
+                                    },
+                     new Slide() {
+                                Name = "Slider 2",
+                                DisplayOrder = 2,
+                                Status = true,
+                                Url = "#",
+                                Image = "/Assets/client/images/bad1.jpg",
+                                Content=@"<h2>FLAT 50% 0FF</h2>
+                                <label>FOR ALL PURCHASE <b>VALUE</b></label>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et </ p >
+                               < span class=""on-get"">GET NOW</span>"
+                                 }
+                     
+                };
+                context.Slides.AddRange(listSlide);
+                context.SaveChanges();
             }
         }
     }
