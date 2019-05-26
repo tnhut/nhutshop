@@ -29,7 +29,7 @@
         }
 
         function post(url, data, success, failure) {
-            authenticationService.setHeader();
+           
             $http.post(url, data).then(function (result) {
                 success(result);
             }, function (error) {
@@ -39,9 +39,9 @@
                 else if (failure != null) {
                     failure(error);
                 }
-               
-               
+                             
             })
+            authenticationService.setHeader();
         }
 
         function put(url, data, success, failure) {
