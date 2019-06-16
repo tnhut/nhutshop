@@ -24,6 +24,7 @@ namespace NhutShop.Service
         IEnumerable<Product> GetListProductByCategoryIdPaging(int categoryId, int page, int pageSize, string sort,out int totalRow);
         IEnumerable<Product> Search(string keyword, int page, int pageSize, string sort, out int totalRow);
 
+        IEnumerable<Product> GetReatedProducts(int id, int top);
         IEnumerable<string> GetListProductByName(string name);
         Product GetById(int id);
         void Save();
@@ -191,6 +192,12 @@ namespace NhutShop.Service
             }
             totalRow = query.Count();
             return query.Skip((page - 1) * pageSize).Take(pageSize);// vd page=1, pagesize=20
+        }
+
+        public IEnumerable<Product> GetReatedProducts(int id, int top)
+        {
+            var product = _productRepository.GetSingleById(id);
+            return _productRepository.GetMulti(x => x.Status && x.ID!=id && x.CategoryID==product.CategoryID).OrderByDescending(x => x.CreatedDate).Take(top);
         }
     }
 }

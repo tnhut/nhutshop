@@ -9,6 +9,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Script.Serialization;
 
 namespace NhutShop.Web.Controllers
 {
@@ -24,8 +25,14 @@ namespace NhutShop.Web.Controllers
         }
         public ActionResult Detail(int id)
         {
-            
-            return View();
+            var productModel = _productService.GetById(id);
+            var viewModel = Mapper.Map<Product, ProductViewModel>(productModel);
+            var relatedProduct = _productService.GetReatedProducts(id, 6);
+            ViewBag.RelatedProducts = Mapper.Map<IEnumerable<Product>, IEnumerable<ProductViewModel>>(relatedProduct);
+
+            List<string> listImages = new JavaScriptSerializer().Deserialize<List<string>>(viewModel.MoreImages);
+            ViewBag.MoreImages = listImages;
+            return View(viewModel);
         }
 
         public ActionResult Category(int id, int page=1, string sort="")
