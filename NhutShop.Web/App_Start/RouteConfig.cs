@@ -48,6 +48,12 @@ namespace NhutShop.Web
               defaults: new { controller = "Product", action = "Detail", id = UrlParameter.Optional },
               namespaces: new string[] { "NhutShop.Web.Controllers" }
           );
+            routes.MapRoute(
+            name: "TagList",
+            url: "tag/{tagid}.html",
+            defaults: new { controller = "Product", action = "ListByTag", tagid = UrlParameter.Optional },
+            namespaces: new string[] { "NhutShop.Web.Controllers" }
+                     );
 
             routes.MapRoute(
                 name: "Default",

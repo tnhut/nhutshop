@@ -4976,6 +4976,7 @@
     <Content Include="Assets\Admin\libs\toastr\toastr.min.css" />
     <Content Include="Assets\Admin\libs\toastr\toastr.min.js" />
     <Content Include="Assets\Client\css\bootstrap.css" />
+    <Content Include="Assets\Client\css\custom.css" />
     <Content Include="Assets\Client\css\etalage.css" />
     <Content Include="Assets\Client\css\form.css" />
     <Content Include="Assets\Client\css\style.css" />
@@ -7183,6 +7184,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Product\Detail.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Product\ListByTag.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
