@@ -8,6 +8,8 @@
     using System.Collections.Generic;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
+    using System.Data.Entity.Validation;
+    using System.Diagnostics;
     using System.Linq;
 
     internal sealed class Configuration : DbMigrationsConfiguration<NhutShop.Data.NhutShopDbContext>
@@ -22,7 +24,7 @@
             CreateProductCategorySample(context);
             CreateSlide(context);
             //  This method will be called after migrating to the latest version.
-                     
+            CreatePage(context);       
         }
 
         private void CreateUser(NhutShopDbContext context)
@@ -110,6 +112,51 @@
                 };
                 context.Slides.AddRange(listSlide);
                 context.SaveChanges();
+            }
+        }
+
+        private void CreatePage(NhutShopDbContext context)
+        {
+            if(context.Pages.Count()==0)
+            {
+                try
+                {
+                    var page = new Page()
+                    {
+                        Name="Giới thiệu",
+                        Alias = "gioi-thieu",
+                        Content = @"Sed ut perspiciatis unde omnis iste natus error
+                    sit voluptatem accusantium doloremque laudantium,
+                    totam rem aperiam, eaque ipsa quae ab illo inventore 
+                    veritatis et quasi architecto beatae vitae dicta sunt explicabo.
+                    Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit,
+                    sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. 
+                    Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet,
+                    consectetur, adipisci velit, sed quia non numquam eius modi tempora 
+                    incidunt ut labore et dolore magnam aliquam quaerat voluptatem. 
+                    Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis 
+                    suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? 
+                    Quis autem vel eum iure reprehenderit qui in ea voluptate velit
+                    esse quam nihil molestiae consequatur, vel illum qui dolorem eum 
+                    fugiat quo voluptas nulla pariatur?",
+                        Status = true
+                    };
+                    context.Pages.Add(page);
+                    context.SaveChanges();
+                }
+                catch (DbEntityValidationException ex)
+                {
+                    foreach (var eve in ex.EntityValidationErrors)
+                    {
+                        Trace.WriteLine($"Entity of type \"{eve.Entry.Entity.GetType().Name}\" in state \"{eve.Entry.State}\" has the following validation error:");
+                        foreach (var ve in eve.ValidationErrors)
+                        {
+                            Trace.WriteLine($"- Property: \"{ ve.PropertyName}\", Error: \"{ve.ErrorMessage}\"");
+                        }
+                    }
+                  
+                }
+
             }
         }
     }
