@@ -24,7 +24,8 @@
             CreateProductCategorySample(context);
             CreateSlide(context);
             //  This method will be called after migrating to the latest version.
-            CreatePage(context);       
+            CreatePage(context);
+            CreateContactDetail(context);
         }
 
         private void CreateUser(NhutShopDbContext context)
@@ -155,6 +156,43 @@
                         }
                     }
                   
+                }
+
+            }
+        }
+
+        private void CreateContactDetail(NhutShopDbContext context)
+        {
+            if (context.ContactDetails.Count() == 0)
+            {
+                try
+                {
+                    var contactdetail = new NhutShop.Model.Models.ContactDetail()
+                    {
+                        Name = "Giới thiệu",
+                        Address="So 482 Hồng Bàn",
+                        Email="nhut@gmail.com",
+                        Lat= 10.753808,
+                        Lng = 106.6464806,
+                        Phone="0933788670",
+                        Website="http:phimmoi.com",
+                        Other="",
+                        Status = true
+                    };
+                    context.ContactDetails.Add(contactdetail);
+                    context.SaveChanges();
+                }
+                catch (DbEntityValidationException ex)
+                {
+                    foreach (var eve in ex.EntityValidationErrors)
+                    {
+                        Trace.WriteLine($"Entity of type \"{eve.Entry.Entity.GetType().Name}\" in state \"{eve.Entry.State}\" has the following validation error:");
+                        foreach (var ve in eve.ValidationErrors)
+                        {
+                            Trace.WriteLine($"- Property: \"{ ve.PropertyName}\", Error: \"{ve.ErrorMessage}\"");
+                        }
+                    }
+
                 }
 
             }

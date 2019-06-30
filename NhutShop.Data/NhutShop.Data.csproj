@@ -109,9 +109,14 @@
     <Compile Include="Migrations\201906161457238_AddMoreQuantity.Designer.cs">
       <DependentUpon>201906161457238_AddMoreQuantity.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201906300911104_DetailContract.cs" />
+    <Compile Include="Migrations\201906300911104_DetailContract.Designer.cs">
+      <DependentUpon>201906300911104_DetailContract.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="NhutShopDbContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\ContactDetailRepository.cs" />
     <Compile Include="Repositories\ErrorRepository.cs" />
     <Compile Include="Repositories\FooterRepository.cs" />
     <Compile Include="Repositories\MenuGroupRepository.cs" />
@@ -178,6 +183,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201906161457238_AddMoreQuantity.resx">
       <DependentUpon>201906161457238_AddMoreQuantity.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201906300911104_DetailContract.resx">
+      <DependentUpon>201906300911104_DetailContract.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
