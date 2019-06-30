@@ -99,5 +99,14 @@ namespace NhutShop.Web.Infrastructure.Extensions
             product.Tags = productVm.Tags;
             product.Quantity = productVm.Quantity;
         }
+
+        public static void UpdateFeedback(this Feedback feedback, FeedbackViewModel FeedbackVm)
+        {
+            feedback.Name = FeedbackVm.Name;
+            feedback.Email = FeedbackVm.Email;
+            feedback.Message = FeedbackVm.Message;
+            feedback.Status = FeedbackVm.Status;
+            feedback.CreatedDate = DateTime.Now;
+        }
     }
 }

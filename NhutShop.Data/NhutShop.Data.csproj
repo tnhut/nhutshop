@@ -113,11 +113,16 @@
     <Compile Include="Migrations\201906300911104_DetailContract.Designer.cs">
       <DependentUpon>201906300911104_DetailContract.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201906301423310_Feedback.cs" />
+    <Compile Include="Migrations\201906301423310_Feedback.Designer.cs">
+      <DependentUpon>201906301423310_Feedback.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="NhutShopDbContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\ContactDetailRepository.cs" />
     <Compile Include="Repositories\ErrorRepository.cs" />
+    <Compile Include="Repositories\FeedbackRepository.cs" />
     <Compile Include="Repositories\FooterRepository.cs" />
     <Compile Include="Repositories\MenuGroupRepository.cs" />
     <Compile Include="Repositories\MenuRepository.cs" />
@@ -186,6 +191,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201906300911104_DetailContract.resx">
       <DependentUpon>201906300911104_DetailContract.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201906301423310_Feedback.resx">
+      <DependentUpon>201906301423310_Feedback.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
