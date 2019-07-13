@@ -25,7 +25,7 @@ namespace NhutShop.Web.Controllers
             _productService = productService;
         }
       //  [ChildActionOnly]
-        [OutputCache(Duration = 3600, Location =System.Web.UI.OutputCacheLocation.Server)]
+        [OutputCache(Duration = 3600, Location =System.Web.UI.OutputCacheLocation.Client)]
         public ActionResult Index()
         {
             var slideModel = _commonService.GetSlides();
