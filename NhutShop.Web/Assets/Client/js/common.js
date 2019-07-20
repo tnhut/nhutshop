@@ -40,6 +40,25 @@
             $('#frmLogout').submit();
         })
 
+        $('.btnAddToCart').off('click').on('click', function (e) {
+            debugger
+            e.preventDefault();
+            var productId = parseInt($(this).data('id'));
+            $.ajax({
+                url: '/ShoppingCart/Add',
+                data: {
+                    id: productId
+                },
+                type: 'POST',
+                dataType: 'json',
+                success: function (response) {
+                    if (response.status) {
+                        alert('Thêm sản phẩm thành công')
+                    }
+                }
+            })
+        })
+
     } 
     
 }

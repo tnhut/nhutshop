@@ -24,5 +24,7 @@ namespace NhutShop.Model.Models
             // Add custom user claims here
             return userIdentity;
         }
+
+        public virtual IEnumerable<Order> Orders { set; get; }
     }
 }
