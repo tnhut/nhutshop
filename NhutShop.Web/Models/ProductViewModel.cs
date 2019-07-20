@@ -6,6 +6,7 @@ using System.Web;
 
 namespace NhutShop.Web.Models
 {
+    [Serializable]
     public class ProductViewModel
     {
        

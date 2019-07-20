@@ -15,6 +15,11 @@ namespace NhutShop.Web.Models
         [Required(ErrorMessage = "Vui lòng nhập password")]
         [MinLength(6,ErrorMessage ="Password phải có ít nhất 6 ký tự")]
         public string Password { set; get; }
+
+        [Required(ErrorMessage = "Vui lòng nhập lại password.")]
+        [Compare("Password", ErrorMessage = "Password and ConfirmPassword must match.")]
+        public string ConfirmPassword { set; get; }
+
         [Required(ErrorMessage = "Vui lòng nhập enail")]
         [EmailAddress(ErrorMessage ="Địa chỉ Email không hợp lệ")]
         public string Email { set; get; }

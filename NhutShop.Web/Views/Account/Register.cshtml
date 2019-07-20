@@ -40,10 +40,13 @@
                 <span>Mật khẩu<label>*</label></span>
                 @Html.PasswordFor(model => model.Password)
 
+                <span>Xác nhận Mật khẩu<label>*</label></span>
+                @Html.PasswordFor(model => model.ConfirmPassword)
+
                 @{
                     MvcCaptcha registerCaptcha = new MvcCaptcha("registerCaptcha");
 
-                };
+                }
                 @Html.Captcha(registerCaptcha)
                 @Html.TextBox("registerCaptcha")
             </div>
